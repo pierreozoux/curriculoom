@@ -1,0 +1,27 @@
+{
+    "name": "curriculoom",
+    "version": "1.0.0",
+    "homepage": "https://github.com/Toub/curriculoom",
+    "authors": [
+    "Nicolas Toublanc <n.toublanc@gmail.com>"
+  ],
+    "description": "Online curriculum vitae",
+    "main": "app.js",
+    "keywords": [
+    "curriculum",
+    "vitae",
+    "cv"
+  ],
+    "license": "Apache 2.0",
+    "ignore": [
+    "**/.*",
+    "node_modules",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+    "directory": "app/bower_components",
+    "dependencies": {
+        "angular": "~1.3.14"
+    }
+}

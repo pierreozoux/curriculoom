@@ -2,6 +2,6 @@
 
     'use strict';
 
-    angular.module('curriculoom', ['curriculoom.profile']);
+    angular.module('curriculoom', ['ui.bootstrap', 'curriculoom.profile']);
 
 })();

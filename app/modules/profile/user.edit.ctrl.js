@@ -29,7 +29,7 @@
             $scope.user = {
                 firstName: 'John',
                 lastName: 'Smith',
-                tags: ['java', 'tests', 'gestion de projets', 'php', 'hybris'],
+                tags: [],
                 email: 'john.smith@sqli.com',
                 age: 25,
                 location: 'Rabat, Morocco',

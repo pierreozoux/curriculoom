@@ -2,6 +2,10 @@
 
     'use strict';
 
-    angular.module('curriculoom', ['ui.bootstrap', 'curriculoom.profile']);
+    angular.module('curriculoom', [
+        'ui.bootstrap',
+        'ngMessages',
+        'curriculoom.profile'
+    ]);
 
 })();

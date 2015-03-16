@@ -12,14 +12,17 @@
         <p ng-show="user.expectedSalary">Your expected salary is {{ user.expectedSalary | currency }}.</p>
     </div>
 
-    <form>
+    <form name="userForm" novalidate ng-submit="save()">
         <div class="row">
             <div class="col-md-8">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="form-group">
+                        <div class="form-group required">
                             <label class="control-label">First name</label>
-                            <input class="form-control" type="text" ng-model="user.firstName">
+                            <input name="firstName" class="form-control" required type="text" ng-model="user.firstName">
+                        </div>
+                        <div ng-messages="userForm.firstName.$error && ">
+                            <div class="error" ng-message="required">Please enter your first name.</div>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -99,8 +102,11 @@
             </div>
         </div>
         <div class="row text-center">
-            <div class="col-md-12">
-                <button type="submit" class="btn btn-warning" ng-click="reset()">Cancel</button>
+            <div class="col-md-3 col-md-offset-3">
+                <button type="submit" class="btn btn-lg btn-primary">Save</button>
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-lg btn-warning" ng-click="reset()">Cancel</button>
             </div>
         </div>
     </form>

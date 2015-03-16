@@ -2,21 +2,100 @@
 
     <h1>Edit profile</h1>
 
-    <div class="preview alert alert-success" ng-if="firstName && lastName">Bonjour {{ getFullName() }}!</div>
-    
+    <div class="preview alert alert-success" ng-if="firstName && lastName">
+        <p>Hello {{ getFullName() }} (john.smith@sqli.com)!</p>
+        <p>You are a 25 years old male and you live in Rabat, Morocco.</p>
+        <p>Your next availability is the 1st of November 2015, and your expected salary is 20 000,00€.</p>
+    </div>
+
     <form>
         <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="control-label">Entrez votre prénom</label>
-                    <input class="form-control" type="text" ng-model="firstName">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">First name</label>
+                            <input class="form-control" type="text" ng-model="user.firstName">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Last name</label>
+                            <input class="form-control" type="text" ng-model="user.lastName">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Email</label>
+                            <input class="form-control" type="email">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Age</label>
+                            <input class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Location</label>
+                            <input class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Sex</label>
+                            <select class="form-control">
+                                <option>Female</option>
+                                <option>Male</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="control-label">Currently available</label>
+                            <input class="form-control" type="checkbox">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label">Next availability</label>
+                            <input class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Expected salary</label>
+                            <input class="form-control" type="text">
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="form-group">
-                    <label class="control-label">Entrez votre nom</label>
-                    <input class="form-control" type="text" ng-model="lastName">
+                    <label class="control-label">Tags</label>
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <input class="form-control" type="text" placeholder="java, tests, gestion de projet, php, hybris...">
+                        </div>
+                        <div class="col-sm-4">
+                            <a class="btn btn-primary">add</a>
+                        </div>
+                    </div>
                 </div>
+                <ul class="tags">
+                    <li class="tag">java</li>
+                    <li class="tag">tests</li>
+                    <li class="tag">gestion de projet</li>
+                    <li class="tag">php</li>
+                    <li class="tag">hybris</li>
+                </ul>
             </div>
         </div>
         <div class="row text-center">

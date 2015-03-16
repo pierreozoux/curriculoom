@@ -1,3 +1,8 @@
 .edit-user-page .preview{
     margin-bottom: 20px;
 }
+
+.edit-user-page form .tags .tag{
+    font-weight: bold;
+    color: #487490;
+}

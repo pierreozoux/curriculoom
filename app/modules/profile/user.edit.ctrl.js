@@ -8,8 +8,7 @@
     function EditUserController($scope) {
 
         // scope attributes 
-        $scope.firstName;
-        $scope.lastName;
+        $scope.user = {};
 
         // scope methods
         $scope.getFullName = getFullName;
@@ -22,12 +21,14 @@
         }
 
         function getFullName() {
-            return $scope.firstName + ' ' + $scope.lastName;
+            return $scope.user.firstName + ' ' + $scope.user.lastName;
         }
 
         function reset() {
-            $scope.firstName = 'John';
-            $scope.lastName = 'Smith';
+            $scope.user = {
+                firstName: 'John',
+                lastName: 'Smith'
+            };
         }
 
     }

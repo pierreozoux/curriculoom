@@ -1,22 +1,29 @@
 <div class="edit-user-page page" ng-controller="EditUserController">
+
+    <h1>Edit profile</h1>
+
+    <div class="preview alert alert-success" ng-if="firstName && lastName">Bonjour {{ getFullName() }}!</div>
+    
     <form>
-        <div>
-            <label>Entrez votre prénom</label>
-            <div>
-                <input type="text" ng-model="firstName">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group required">
+                    <label class="control-label">Entrez votre prénom</label>
+                    <input class="form-control" type="text" ng-model="firstName">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group required">
+                    <label class="control-label">Entrez votre nom</label>
+                    <input class="form-control" type="text" ng-model="lastName">
+                </div>
             </div>
         </div>
-        <div>
-            <label>Entrez votre nom</label>
-            <div>
-                <input type="text" ng-model="lastName">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-warning" ng-click="reset()">Cancel</button>
             </div>
         </div>
     </form>
-    
-    <p ng-if="firstName && lastName">Bonjour {{ getFullName() }}!</p>
 
-    <div>
-        <button ng-click="reset()">reset</button>
-    </div>
 </div>

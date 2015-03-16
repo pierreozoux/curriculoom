@@ -8,6 +8,9 @@
     <base href="/">
     <title>Curriculoom</title>
     <meta name="description" content="Online curriculum vitae">
+    
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+
     <link rel="stylesheet" href="app.css">
     <link rel="stylesheet" href="modules/profile/user.edit.css">
 </head>
@@ -18,7 +21,7 @@
 
         <header class="header-area"></header>
 
-        <div class="body-area">
+        <div class="body-area container">
             <div ng-include="'/modules/profile/user.edit.html'"></div>
         </div>
 
@@ -28,6 +31,9 @@
 
     <!-- dépendance Angular -->
     <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 
     <!-- votre application -->
     <script type="text/javascript" src="app.js"></script>

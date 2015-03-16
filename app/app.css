@@ -1,3 +1,5 @@
-.page{
-    border: 1px solid #555;
+.form-group.required .control-label:after {
+    content: "*";
+    color: red;
+    margin-left: 3px;
 }

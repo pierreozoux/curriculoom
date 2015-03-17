@@ -6,3 +6,12 @@
     font-weight: bold;
     color: #487490;
 }
+
+.edit-user-page h1.female{
+    font-style: italic;
+    color: crimson;
+}
+.edit-user-page h1.male{
+    font-weight: bold;
+    color: #487490;
+}

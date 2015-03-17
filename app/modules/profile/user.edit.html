@@ -1,10 +1,10 @@
 <div class="edit-user-page page" ng-controller="EditUserController">
 
-    <h1>Edit profile</h1>
+    <h1 ng-class="[user.gender]">Edit profile</h1>
 
     <div class="preview alert alert-success">
         <p>Hello {{ getFullName() }} ({{ user.email }})!</p>
-        <p>You are a {{ user.age }} years old {{ user.sex }} and you live in {{ user.location }}.</p>
+        <p>You are a {{ user.age }} years old {{ user.gender }} and you live in {{ user.location }}.</p>
         <p>
             <span ng-show="user.currentlyAvailable">You are currently available.</span>
             <span ng-hide="user.currentlyAvailable">Your next availability is the {{ user.nextAvailabilityDate | date: 'shortDate' }}</span>
@@ -52,8 +52,8 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label">Sex</label>
-                            <select class="form-control" ng-model="user.sex">
+                            <label class="control-label">Gender</label>
+                            <select class="form-control" ng-model="user.gender">
                                 <option value="female">Female</option>
                                 <option value="male">Male</option>
                             </select>

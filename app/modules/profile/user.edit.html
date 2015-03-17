@@ -83,7 +83,7 @@
                             <label class="control-label">Next availability</label>
                             <input name="nextAvailabilityDate" class="form-control" type="text" ng-model="user.nextAvailabilityDate" datepicker-popup is-open="openValidityDate" ng-focus="openValidityDate=true" ng-click="openValidityDate=true">
                         </div>
-                        <div ng-messages="userForm.nextAvailabilityDate.$error" ng-if="userForm.nextAvailabilityDate.$touched || userForm.$submitted" ng-messages-include="components/form/generic-error-messages.html">
+                        <div ng-messages="userForm.nextAvailabilityDate.$error" ng-if="userForm.$submitted" ng-messages-include="components/form/generic-error-messages.html">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -107,9 +107,10 @@
                     <div class="col-md-6">
                         <div class="form-group required">
                             <label class="control-label">Password (confirm)</label>
-                            <input name="passwordConfirmation" class="form-control" type="password" ng-model="user.passwordConfirmation">
+                            <input name="passwordConfirmation" class="form-control" type="password" ng-model="user.passwordConfirmation" match="user.password">
                         </div>
                         <div ng-messages="userForm.passwordConfirmation.$error" ng-if="userForm.passwordConfirmation.$touched || userForm.$submitted" ng-messages-include="components/form/generic-error-messages.html">
+                           <div class="error" ng-message="match">Confirmation password does not match</div>
                         </div>
                     </div>
                 </div>

@@ -21,7 +21,12 @@
                             <label class="control-label">First name</label>
                             <input name="firstName" required class="form-control" type="text" ng-model="user.firstName">
                         </div>
+<<<<<<< HEAD
                         <div ng-messages="userForm.firstName.$error" ng-if="userForm.firstName.$touched || userForm.$submitted" ng-messages-include="components/form/generic-error-messages.html">
+=======
+                        <div ng-messages="userForm.firstName.$error">
+                            <div class="error" ng-message="required">Please enter your first name.</div>
+>>>>>>> step-005
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -128,7 +133,7 @@
                     </div>
                 </div>
                 <ul class="tags">
-                    <li class="tag" ng-repeat="tag in user.tags">{{ tag }}</li>
+                    <li class="tag" ng-repeat="tag in user.tags"><i class="link glyphicon glyphicon-trash" ng-click="removeTag(tag)"></i> {{ tag }}</li>
                 </ul>
                 <input class="hidden" name="tagsLength" ng-model="user.tags.length" type="number" min="1" max="5" />
                 <div ng-messages="userForm.tagsLength.$error" ng-if="userForm.tagsLength.$dirty || userForm.$submitted" ng-messages-include="components/form/generic-error-messages.html">

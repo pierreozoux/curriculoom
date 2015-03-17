@@ -14,7 +14,11 @@
         $scope.getFullName = getFullName;
         $scope.reset = reset;
         $scope.addTag = addTag;
+<<<<<<< HEAD
         $scope.isValidTag = isValidTag;
+=======
+        $scope.removeTag = removeTag;
+>>>>>>> step-005
 
         init();
 
@@ -46,6 +50,11 @@
                 $scope.user.tags.push(newTag);
                 $scope.newTag = '';
             }
+        }
+        
+        function removeTag(tag){
+            var index = $scope.user.tags.indexOf(tag);
+            $scope.user.tags.splice(index, 1);
         }
 
         function isValidTag(newTag) {

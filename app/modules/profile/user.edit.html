@@ -21,7 +21,7 @@
                             <label class="control-label">First name</label>
                             <input name="firstName" class="form-control" required type="text" ng-model="user.firstName">
                         </div>
-                        <div ng-messages="userForm.firstName.$error && ">
+                        <div ng-messages="userForm.firstName.$error">
                             <div class="error" ng-message="required">Please enter your first name.</div>
                         </div>
                     </div>

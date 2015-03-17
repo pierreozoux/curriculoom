@@ -14,6 +14,7 @@
         $scope.getFullName = getFullName;
         $scope.reset = reset;
         $scope.addTag = addTag;
+        $scope.isValidTag = isValidTag;
 
         init();
 
@@ -39,12 +40,16 @@
                 expectedSalary: 1000000
             };
         }
-        
-        function addTag(newTag){
-            $scope.user.tags.push(newTag);
-            $scope.newTag = '';
+
+        function addTag(newTag) {
+            if (isValidTag(newTag)) {
+                $scope.user.tags.push(newTag);
+                $scope.newTag = '';
+            }
         }
 
+        function isValidTag(newTag) {
+            return (newTag && newTag.trim().length !== 0 && $scope.user.tags.indexOf(newTag) === -1);
+        }
     }
-
 }());

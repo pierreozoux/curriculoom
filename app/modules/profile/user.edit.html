@@ -105,7 +105,7 @@
                             <input class="form-control" type="text" placeholder="java, tests, gestion de projet, php, hybris..." ng-model="newTag">
                         </div>
                         <div class="col-sm-4">
-                            <a class="btn btn-primary" ng-click="addTag(newTag)">add</a>
+                            <a class="btn btn-primary" ng-click="addTag(newTag)" ng-disabled="!isValidTag(newTag)">add</a>
                         </div>
                     </div>
                 </div>

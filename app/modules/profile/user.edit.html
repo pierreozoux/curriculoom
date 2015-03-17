@@ -21,13 +21,7 @@
                             <label class="control-label">First name</label>
                             <input name="firstName" required class="form-control" type="text" ng-model="user.firstName">
                         </div>
-<<<<<<< HEAD
-                        <div ng-messages="userForm.firstName.$error" ng-if="userForm.firstName.$touched || userForm.$submitted" ng-messages-include="components/form/generic-error-messages.html">
-=======
-                        <div ng-messages="userForm.firstName.$error">
-                            <div class="error" ng-message="required">Please enter your first name.</div>
->>>>>>> step-005
-                        </div>
+                        <div ng-messages="userForm.firstName.$error" ng-if="userForm.firstName.$touched || userForm.$submitted" ng-messages-include="components/form/generic-error-messages.html"></div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group required">

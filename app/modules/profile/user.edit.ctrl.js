@@ -14,11 +14,8 @@
         $scope.getFullName = getFullName;
         $scope.reset = reset;
         $scope.addTag = addTag;
-<<<<<<< HEAD
         $scope.isValidTag = isValidTag;
-=======
         $scope.removeTag = removeTag;
->>>>>>> step-005
 
         init();
 

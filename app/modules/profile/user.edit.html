@@ -4,7 +4,7 @@
 
     <div class="preview alert alert-success">
         <p>Hello {{ getFullName() }} ({{ user.email }})!</p>
-        <p>You are a {{ user.age }} years old {{ user.sex }} and you live in {{ user.location }}.</p>
+        <p>You are a {{ user.age }} years old {{ user.gender }} and you live in {{ user.location }}.</p>
         <p>
             <span ng-show="user.currentlyAvailable">You are currently available.</span>
             <span ng-hide="user.currentlyAvailable">Your next availability is the {{ user.nextAvailabilityDate | date: 'shortDate' }}</span>
@@ -19,47 +19,56 @@
                     <div class="col-md-6">
                         <div class="form-group required">
                             <label class="control-label">First name</label>
-                            <input name="firstName" class="form-control" required type="text" ng-model="user.firstName">
+                            <input name="firstName" required class="form-control" type="text" ng-model="user.firstName">
                         </div>
-                        <div ng-messages="userForm.firstName.$error && ">
-                            <div class="error" ng-message="required">Please enter your first name.</div>
+                        <div ng-messages="userForm.firstName.$error" ng-if="userForm.firstName.$touched || userForm.$submitted" ng-messages-include="components/form/generic-error-messages.html">
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="form-group">
+                        <div class="form-group required">
                             <label class="control-label">Last name</label>
-                            <input class="form-control" type="text" ng-model="user.lastName">
+                            <input name="lastName" required class="form-control" type="text" ng-model="user.lastName">
+                        </div>
+                        <div ng-messages="userForm.lastName.$error" ng-if="userForm.lastName.$touched || userForm.$submitted" ng-messages-include="components/form/generic-error-messages.html">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="form-group">
+                        <div class="form-group required">
                             <label class="control-label">Email</label>
-                            <input class="form-control" type="email" ng-model="user.email">
+                            <input name="email" required class="form-control" type="email" ng-model="user.email">
+                        </div>
+                        <div ng-messages="userForm.email.$error" ng-if="userForm.email.$touched || userForm.$submitted" ng-messages-include="components/form/generic-error-messages.html">
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="form-group">
+                        <div class="form-group required">
                             <label class="control-label">Age</label>
-                            <input class="form-control" type="number" ng-model="user.age">
+                            <input name="age" required class="form-control" type="number" ng-model="user.age">
+                        </div>
+                        <div ng-messages="userForm.age.$error" ng-if="userForm.age.$touched || userForm.$submitted" ng-messages-include="components/form/generic-error-messages.html">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label">Location</label>
+                            <label name="location" required class="control-label">Location</label>
                             <input class="form-control" type="text" ng-model="user.location">
                         </div>
+                        <div ng-messages="userForm.location.$error" ng-if="userForm.location.$touched || userForm.$submitted" ng-messages-include="components/form/generic-error-messages.html">
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label">Sex</label>
-                            <select class="form-control" ng-model="user.sex">
+                            <label class="control-label">Gender</label>
+                            <select name="gender" required class="form-control" ng-model="user.gender">
                                 <option value="female">Female</option>
                                 <option value="male">Male</option>
                             </select>
+                        </div>
+                        <div ng-messages="userForm.gender.$error" ng-if="userForm.gender.$touched || userForm.$submitted" ng-messages-include="components/form/generic-error-messages.html">
                         </div>
                     </div>
                 </div>

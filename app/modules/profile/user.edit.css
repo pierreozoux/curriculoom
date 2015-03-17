@@ -3,15 +3,16 @@
 }
 
 .edit-user-page form .tags .tag{
-    font-weight: bold;
     color: #487490;
+   font-weight: bold;
 }
 
 .edit-user-page h1.female{
-    font-style: italic;
     color: crimson;
 }
 .edit-user-page h1.male{
-    font-weight: bold;
     color: #487490;
 }
+.edit-user-page h1.is-available{
+   font-weight: bold;
+}    

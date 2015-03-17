@@ -1,6 +1,6 @@
 <div class="edit-user-page page" ng-controller="EditUserController">
 
-    <h1 ng-class="[user.gender]">Edit profile</h1>
+    <h1 ng-class="{ 'is-available': user.currentlyAvailable, 'male': user.gender === 'male', 'female': user.gender === 'female' }">Edit profile</h1>
 
     <div class="preview alert alert-success">
         <p>Hello {{ getFullName() }} ({{ user.email }})!</p>

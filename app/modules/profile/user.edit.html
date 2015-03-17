@@ -96,6 +96,24 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group required">
+                            <label class="control-label">Password</label>
+                            <input name="password" minlength="8" class="form-control" type="password" ng-model="user.password">
+                        </div>
+                        <div ng-messages="userForm.password.$error" ng-if="userForm.password.$touched || userForm.$submitted" ng-messages-include="components/form/generic-error-messages.html">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group required">
+                            <label class="control-label">Password (confirm)</label>
+                            <input name="passwordConfirmation" class="form-control" type="password" ng-model="user.passwordConfirmation">
+                        </div>
+                        <div ng-messages="userForm.passwordConfirmation.$error" ng-if="userForm.passwordConfirmation.$touched || userForm.$submitted" ng-messages-include="components/form/generic-error-messages.html">
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
@@ -113,7 +131,7 @@
                     <li class="tag" ng-repeat="tag in user.tags">{{ tag }}</li>
                 </ul>
                 <input class="hidden" name="tagsLength" ng-model="user.tags.length" type="number" min="1" max="5" />
-                <div ng-messages="userForm.tagsLength.$error" ng-messages-include="components/form/generic-error-messages.html">
+                <div ng-messages="userForm.tagsLength.$error" ng-if="userForm.tagsLength.$dirty || userForm.$submitted" ng-messages-include="components/form/generic-error-messages.html">
                     <div class="error" ng-message="min">Please enter at least one tag</div>
                     <div class="error" ng-message="max">Please enter 5 tags max</div>
                 </div>

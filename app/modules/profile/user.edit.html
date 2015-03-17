@@ -82,13 +82,17 @@
                     <div class="col-md-3">
                         <div class="form-group" ng-hide="user.currentlyAvailable">
                             <label class="control-label">Next availability</label>
-                            <input class="form-control" type="text" ng-model="user.nextAvailabilityDate" datepicker-popup is-open="openValidityDate" ng-focus="openValidityDate=true" ng-click="openValidityDate=true">
+                            <input name="nextAvailabilityDate" class="form-control" type="text" ng-model="user.nextAvailabilityDate" datepicker-popup is-open="openValidityDate" ng-focus="openValidityDate=true" ng-click="openValidityDate=true">
+                        </div>
+                        <div ng-messages="userForm.nextAvailabilityDate.$error" ng-if="userForm.nextAvailabilityDate.$touched || userForm.$submitted" ng-messages-include="components/form/generic-error-messages.html">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Expected salary</label>
-                            <input class="form-control" type="text" ng-model="user.expectedSalary">
+                            <input name="expectedSalary" class="form-control" type="number" ng-model="user.expectedSalary">
+                        </div>
+                        <div ng-messages="userForm.expectedSalary.$error" ng-if="userForm.expectedSalary.$touched || userForm.$submitted" ng-messages-include="components/form/generic-error-messages.html">
                         </div>
                     </div>
                 </div>
@@ -108,6 +112,10 @@
                 <ul class="tags">
                     <li class="tag" ng-repeat="tag in user.tags">{{ tag }}</li>
                 </ul>
+                <input class="hidden" name="tagsLength" ng-model="user.tags.length" type="number" min="1" value="{{ user.tags.length }}" />
+                <div ng-messages="userForm.tagsLength.$error" ng-messages-include="components/form/generic-error-messages.html">
+                    <div class="error" ng-message="min">Please enter at least one tag</div>
+                </div>
             </div>
         </div>
         <div class="row text-center">

@@ -97,7 +97,7 @@
                     </div>
                 </div>
                 <ul class="tags">
-                    <li class="tag" ng-repeat="tag in user.tags">{{ tag }}</li>
+                    <li class="tag" ng-repeat="tag in user.tags"><i class="link glyphicon glyphicon-trash" ng-click="removeTag(tag)"></i> {{ tag }}</li>
                 </ul>
             </div>
         </div>

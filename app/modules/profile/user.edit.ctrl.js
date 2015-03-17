@@ -14,6 +14,7 @@
         $scope.getFullName = getFullName;
         $scope.reset = reset;
         $scope.addTag = addTag;
+        $scope.removeTag = removeTag;
 
         init();
 
@@ -43,6 +44,11 @@
         function addTag(newTag){
             $scope.user.tags.push(newTag);
             $scope.newTag = '';
+        }
+        
+        function removeTag(tag){
+            var index = $scope.user.tags.indexOf(tag);
+            $scope.user.tags.splice(index, 1);
         }
 
     }

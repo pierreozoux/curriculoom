@@ -112,9 +112,10 @@
                 <ul class="tags">
                     <li class="tag" ng-repeat="tag in user.tags">{{ tag }}</li>
                 </ul>
-                <input class="hidden" name="tagsLength" ng-model="user.tags.length" type="number" min="1" value="{{ user.tags.length }}" />
+                <input class="hidden" name="tagsLength" ng-model="user.tags.length" type="number" min="1" max="5" />
                 <div ng-messages="userForm.tagsLength.$error" ng-messages-include="components/form/generic-error-messages.html">
                     <div class="error" ng-message="min">Please enter at least one tag</div>
+                    <div class="error" ng-message="max">Please enter 5 tags max</div>
                 </div>
             </div>
         </div>

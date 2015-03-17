@@ -32,7 +32,7 @@
                 lastName: 'Smith',
                 tags: [],
                 email: 'john.smith@sqli.com',
-                age: 25,
+                age: null,
                 location: 'Rabat, Morocco',
                 gender: 'male',
                 currentlyAvailable: true,

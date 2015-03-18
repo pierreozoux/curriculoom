@@ -1,0 +1,18 @@
+<div class="cf-tags-edit">
+
+    <div class="form-group">
+        <label class="control-label">{{ title }}</label>
+        <div class="row" ng-show="enableAddTag()">
+            <div class="col-sm-8">
+                <input class="form-control" type="text" placeholder="java, tests, gestion de projet, php, hybris..." ng-model="newTag">
+            </div>
+            <div class="col-sm-4">
+                <a class="btn btn-primary" ng-click="addTag(newTag)" ng-disabled="!isValidTag(newTag)">add</a>
+            </div>
+        </div>
+    </div>
+    <ul class="tags">
+        <li class="tag" ng-repeat="tag in tags"><i class="link glyphicon glyphicon-trash" ng-click="removeTag(tag)"></i> {{ tag }}</li>
+    </ul>
+
+</div>

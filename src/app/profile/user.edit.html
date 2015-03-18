@@ -1,0 +1,156 @@
+<div class="container">
+
+    <div ng-include="'components/navbar/navbar.html'"></div>
+
+    <div class="edit-user-page page">
+
+        <h1>Edit profile</h1>
+
+        <div class="row">
+            <div class="col-md-6">
+
+                <div class="preview alert alert-success">
+                    <p>Hello {{ getFullName() }} ({{ user.email }})!</p>
+                    <p>You are a {{ user.age }} years old {{ user.gender }} and you live in {{ user.location.formatted_address }} ({{ user.location.latitude }}, {{ user.location.longitude }}).</p>
+                    <p>
+                        <span ng-show="user.currentlyAvailable">You are currently available.</span>
+                        <span ng-hide="user.currentlyAvailable">Your next availability is the {{ user.nextAvailabilityDate | date: 'shortDate' }}</span>
+                    </p>
+                    <p ng-show="user.expectedSalary">Your expected salary is {{ user.expectedSalary | currency }}.</p>
+                    <p>You have {{ user.projects.length }} projects.</p>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div cm-map></div>
+            </div>
+        </div>
+        <form name="userForm" novalidate ng-submit="save()">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group required">
+                                <label class="control-label">First name</label>
+                                <input name="firstName" required class="form-control" type="text" ng-model="user.firstName">
+                            </div>
+                            <div cf-show-errors form-name="userForm" attribute-name="firstName"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group required">
+                                <label class="control-label">Last name</label>
+                                <input name="lastName" required class="form-control" type="text" ng-model="user.lastName">
+                            </div>
+                            <div cf-show-errors form-name="userForm" attribute-name="lastName"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group required">
+                                <label class="control-label">Email</label>
+                                <input name="email" required class="form-control" type="email" ng-model="user.email">
+                            </div>
+                            <div cf-show-errors form-name="userForm" attribute-name="email"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group required">
+                                <label class="control-label">Age</label>
+                                <input name="age" required class="form-control" type="number" ng-model="user.age">
+                            </div>
+                            <div cf-show-errors form-name="userForm" attribute-name="age"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label name="location" required class="control-label">Location</label>
+                                <div cf-input-city model="user.location"></div>
+                            </div>
+                            <div cf-show-errors form-name="userForm" attribute-name="location"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Gender</label>
+                                <select name="gender" required class="form-control" ng-model="user.gender">
+                                    <option value="female">Female</option>
+                                    <option value="male">Male</option>
+                                </select>
+                            </div>
+                            <div cf-show-errors form-name="userForm" attribute-name="gender"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label">Currently available</label>
+                                <input class="form-control" type="checkbox" ng-model="user.currentlyAvailable">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group" ng-hide="user.currentlyAvailable">
+                                <label class="control-label">Next availability</label>
+                                <input name="nextAvailabilityDate" class="form-control" type="text" ng-model="user.nextAvailabilityDate" datepicker-popup is-open="openValidityDate" ng-focus="openValidityDate=true" ng-click="openValidityDate=true">
+                            </div>
+                            <div cf-show-errors form-name="userForm" attribute-name="nextAvailabilityDate">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Expected salary</label>
+                                <input name="expectedSalary" class="form-control" type="number" ng-model="user.expectedSalary">
+                            </div>
+                            <div cf-show-errors form-name="userForm" attribute-name="expectedSalary">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group required">
+                                <label class="control-label">Password</label>
+                                <input name="password" minlength="4" class="form-control" type="password" ng-model="user.password">
+                            </div>
+                            <div cf-show-errors form-name="userForm" attribute-name="password">
+                            </div>
+                            <div>Strongness: {{ checkStrongness(user.password) }}</div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group required">
+                                <label class="control-label">Password (confirm)</label>
+                                <input name="passwordConfirmation" class="form-control" type="password" ng-model="user.passwordConfirmation" match="user.password">
+                            </div>
+                            <div cf-show-errors form-name="userForm" attribute-name="passwordConfirmation">
+                                <div class="error" ng-message="match">Confirmation password does not match</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div>
+                        <div cf-tags-edit cf-tags-edit-tags="user.languages" cf-tags-edit-max="{{ maxLanguages }}" cf-tags-edit-title="Languages"></div>
+                        <input class="hidden" name="languagesLength" ng-model="user.languages.length" type="number" min="1" />
+                    </div>
+                    <div cf-show-errors form-name="userForm" attribute-name="languagesLength">
+                        <div class="error" ng-message="min">Please enter at least one tag</div>
+                    </div>
+                    <div>
+                        <div cf-tags-edit cf-tags-edit-tags="user.projects" cf-tags-edit-title="Projects"></div>
+                        <input class="hidden" name="projectsLength" ng-model="user.projects.length" type="number" min="1" />
+                        <div cf-show-errors form-name="userForm" attribute-name="languagesLength">
+                            <div class="error" ng-message="min">Please enter at least one tag</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-3 col-md-offset-3">
+                    <button type="submit" class="btn btn-lg btn-primary">Save</button>
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-lg btn-warning" ng-click="reset()">Cancel</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+</div>

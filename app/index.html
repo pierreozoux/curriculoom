@@ -22,7 +22,7 @@
         <header class="header-area"></header>
 
         <div class="body-area container">
-            <div ng-include="'/modules/profile/user.edit.html'"></div>
+            <div ui-view></div>
         </div>
 
         <footer class="footer-area"></footer>
@@ -31,6 +31,7 @@
 
     <!-- dépendance Angular -->
     <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
@@ -42,6 +43,7 @@
     <script type="text/javascript" src="app.js"></script>
     <script type="text/javascript" src="modules/profile/profile.js"></script>
     <script type="text/javascript" src="modules/profile/user.edit.ctrl.js"></script>
+    <script type="text/javascript" src="modules/form/form.js"></script>
 
 </body>
 

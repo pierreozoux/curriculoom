@@ -103,10 +103,11 @@
                         <div class="col-md-6">
                             <div class="form-group required">
                                 <label class="control-label">Password</label>
-                                <input name="password" minlength="8" class="form-control" type="password" ng-model="user.password">
+                                <input name="password" minlength="4" class="form-control" type="password" ng-model="user.password">
                             </div>
                             <div cf-show-errors form-name="userForm" attribute-name="password">
                             </div>
+                            <div>Strongness: {{ checkStrongness(user.password) }}</div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group required">

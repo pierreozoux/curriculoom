@@ -5,7 +5,7 @@
     /* déclaration du controlleur dans le module */
     angular.module('curriculoom.profile').controller('EditUserController', EditUserController);
 
-    function EditUserController($scope) {
+    function EditUserController($scope, passwordService) {
 
         // scope attributes 
         $scope.user = {};
@@ -13,6 +13,7 @@
         // scope methods
         $scope.getFullName = getFullName;
         $scope.reset = reset;
+        $scope.checkStrongness = passwordService.checkStrongness;
         
         $scope.maxLanguages = 3;
 

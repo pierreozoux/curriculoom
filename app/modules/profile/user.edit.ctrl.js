@@ -35,7 +35,7 @@
                 email: 'john.smith@sqli.com',
                 age: null,
                 location: 'Rabat, Morocco',
-                gender: 'male',
+                gender: null,
                 currentlyAvailable: true,
                 newAvailaibilityDate: null,
                 expectedSalary: 1000000

@@ -3,7 +3,7 @@
 
     angular.module('curriculoom.form').directive('cfTagsEdit', cfTagsEdit);
 
-    function cfTagsEdit($parse) {
+    function cfTagsEdit() {
         return {
             templateUrl: 'modules/form/cf-tags-edit/cf-tags-edit.html',
             scope: {

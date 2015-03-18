@@ -14,7 +14,7 @@
         $scope.getFullName = getFullName;
         $scope.reset = reset;
         
-        $scope.maxTags = 2;
+        $scope.maxLanguages = 3;
 
         init();
 
@@ -30,7 +30,8 @@
             $scope.user = {
                 firstName: 'John',
                 lastName: 'Smith',
-                tags: [],
+                languages: [],
+                projects: [],
                 email: 'john.smith@sqli.com',
                 age: null,
                 location: 'Rabat, Morocco',

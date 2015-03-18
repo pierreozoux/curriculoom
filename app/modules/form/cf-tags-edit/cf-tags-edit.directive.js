@@ -8,6 +8,7 @@
             templateUrl: 'modules/form/cf-tags-edit/cf-tags-edit.html',
             scope: {
                 tags: '=cfTagsEditTags',
+                title: '@cfTagsEditTitle',
                 max: '@cfTagsEditMax'
             },
             link: {
@@ -33,6 +34,9 @@
                         }
                         if (!$scope.max) {
                             $scope.max = 5;
+                        }
+                        if (!$scope.title) {
+                            $scope.title = 'Tags';
                         }
 
                     }

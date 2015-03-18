@@ -3,7 +3,10 @@
     'use strict';
 
     /* déclaration du module et de ses dépendances */
-    angular.module('curriculoom.profile', ['curriculoom.form']);
+    angular.module('curriculoom.profile', [
+        'curriculoom.form',
+        'ui.router'
+    ]);
 
     angular.module('curriculoom.profile').config(function ($stateProvider) {
 

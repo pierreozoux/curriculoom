@@ -3,6 +3,6 @@
     'use strict';
 
     /* déclaration du module et de ses dépendances */
-    angular.module('curriculoom.profile', ['curriculoom.form']);
+    angular.module('curriculoom.form', []);
 
 })();

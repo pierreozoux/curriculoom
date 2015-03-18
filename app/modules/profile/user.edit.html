@@ -21,14 +21,14 @@
                             <label class="control-label">First name</label>
                             <input name="firstName" required class="form-control" type="text" ng-model="user.firstName">
                         </div>
-                        <div ng-messages="userForm.firstName.$error" ng-if="userForm.firstName.$touched || userForm.$submitted" ng-messages-include="components/form/generic-error-messages.html"></div>
+                        <div ng-messages="userForm.firstName.$error" ng-if="userForm.firstName.$touched || userForm.$submitted" ng-messages-include="modules/form/generic-error-messages.html"></div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group required">
                             <label class="control-label">Last name</label>
                             <input name="lastName" required class="form-control" type="text" ng-model="user.lastName">
                         </div>
-                        <div ng-messages="userForm.lastName.$error" ng-if="userForm.lastName.$touched || userForm.$submitted" ng-messages-include="components/form/generic-error-messages.html">
+                        <div ng-messages="userForm.lastName.$error" ng-if="userForm.lastName.$touched || userForm.$submitted" ng-messages-include="modules/form/generic-error-messages.html">
                         </div>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                             <label class="control-label">Email</label>
                             <input name="email" required class="form-control" type="email" ng-model="user.email">
                         </div>
-                        <div ng-messages="userForm.email.$error" ng-if="userForm.email.$touched || userForm.$submitted" ng-messages-include="components/form/generic-error-messages.html">
+                        <div ng-messages="userForm.email.$error" ng-if="userForm.email.$touched || userForm.$submitted" ng-messages-include="modules/form/generic-error-messages.html">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -46,7 +46,7 @@
                             <label class="control-label">Age</label>
                             <input name="age" required class="form-control" type="number" ng-model="user.age">
                         </div>
-                        <div ng-messages="userForm.age.$error" ng-if="userForm.age.$touched || userForm.$submitted" ng-messages-include="components/form/generic-error-messages.html">
+                        <div ng-messages="userForm.age.$error" ng-if="userForm.age.$touched || userForm.$submitted" ng-messages-include="modules/form/generic-error-messages.html">
                         </div>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                             <label name="location" required class="control-label">Location</label>
                             <input class="form-control" type="text" ng-model="user.location">
                         </div>
-                        <div ng-messages="userForm.location.$error" ng-if="userForm.location.$touched || userForm.$submitted" ng-messages-include="components/form/generic-error-messages.html">
+                        <div ng-messages="userForm.location.$error" ng-if="userForm.location.$touched || userForm.$submitted" ng-messages-include="modules/form/generic-error-messages.html">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -67,7 +67,7 @@
                                 <option value="male">Male</option>
                             </select>
                         </div>
-                        <div ng-messages="userForm.gender.$error" ng-if="userForm.gender.$touched || userForm.$submitted" ng-messages-include="components/form/generic-error-messages.html">
+                        <div ng-messages="userForm.gender.$error" ng-if="userForm.gender.$touched || userForm.$submitted" ng-messages-include="modules/form/generic-error-messages.html">
                         </div>
                     </div>
                 </div>
@@ -83,7 +83,7 @@
                             <label class="control-label">Next availability</label>
                             <input name="nextAvailabilityDate" class="form-control" type="text" ng-model="user.nextAvailabilityDate" datepicker-popup is-open="openValidityDate" ng-focus="openValidityDate=true" ng-click="openValidityDate=true">
                         </div>
-                        <div ng-messages="userForm.nextAvailabilityDate.$error" ng-if="userForm.$submitted" ng-messages-include="components/form/generic-error-messages.html">
+                        <div ng-messages="userForm.nextAvailabilityDate.$error" ng-if="userForm.$submitted" ng-messages-include="modules/form/generic-error-messages.html">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -91,7 +91,7 @@
                             <label class="control-label">Expected salary</label>
                             <input name="expectedSalary" class="form-control" type="number" ng-model="user.expectedSalary">
                         </div>
-                        <div ng-messages="userForm.expectedSalary.$error" ng-if="userForm.expectedSalary.$touched || userForm.$submitted" ng-messages-include="components/form/generic-error-messages.html">
+                        <div ng-messages="userForm.expectedSalary.$error" ng-if="userForm.expectedSalary.$touched || userForm.$submitted" ng-messages-include="modules/form/generic-error-messages.html">
                         </div>
                     </div>
                 </div>
@@ -101,7 +101,7 @@
                             <label class="control-label">Password</label>
                             <input name="password" minlength="8" class="form-control" type="password" ng-model="user.password">
                         </div>
-                        <div ng-messages="userForm.password.$error" ng-if="userForm.password.$touched || userForm.$submitted" ng-messages-include="components/form/generic-error-messages.html">
+                        <div ng-messages="userForm.password.$error" ng-if="userForm.password.$touched || userForm.$submitted" ng-messages-include="modules/form/generic-error-messages.html">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -109,7 +109,7 @@
                             <label class="control-label">Password (confirm)</label>
                             <input name="passwordConfirmation" class="form-control" type="password" ng-model="user.passwordConfirmation" match="user.password">
                         </div>
-                        <div ng-messages="userForm.passwordConfirmation.$error" ng-if="userForm.passwordConfirmation.$touched || userForm.$submitted" ng-messages-include="components/form/generic-error-messages.html">
+                        <div ng-messages="userForm.passwordConfirmation.$error" ng-if="userForm.passwordConfirmation.$touched || userForm.$submitted" ng-messages-include="modules/form/generic-error-messages.html">
                            <div class="error" ng-message="match">Confirmation password does not match</div>
                         </div>
                     </div>
@@ -131,7 +131,7 @@
                     <li class="tag" ng-repeat="tag in user.tags"><i class="link glyphicon glyphicon-trash" ng-click="removeTag(tag)"></i> {{ tag }}</li>
                 </ul>
                 <input class="hidden" name="tagsLength" ng-model="user.tags.length" type="number" min="1" max="5" />
-                <div ng-messages="userForm.tagsLength.$error" ng-if="userForm.tagsLength.$dirty || userForm.$submitted" ng-messages-include="components/form/generic-error-messages.html">
+                <div ng-messages="userForm.tagsLength.$error" ng-if="userForm.tagsLength.$dirty || userForm.$submitted" ng-messages-include="modules/form/generic-error-messages.html">
                     <div class="error" ng-message="min">Please enter at least one tag</div>
                     <div class="error" ng-message="max">Please enter 5 tags max</div>
                 </div>

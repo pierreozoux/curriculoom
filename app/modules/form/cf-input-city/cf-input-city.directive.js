@@ -7,12 +7,10 @@
         return {
             templateUrl: 'modules/form/cf-input-city/cf-input-city.html',
             scope: {
-                tags: '=cfTagsEditTags',
-                title: '@cfTagsEditTitle',
-                max: '@cfTagsEditMax'
+                model: '='
             },
             link: {
-                pre: function preLink($scope, $element, attributes) {
+                pre: function preLink($scope, $element, attributes, ngModel) {
 
                     // scope properties
 
@@ -37,7 +35,12 @@
                             }
                         }).then(function (response) {
                             return response.data.results.map(function (item) {
-                                return item.formatted_address;
+                                return {
+                                    formatted_address: item.formatted_address,
+                                    latitude: item.geometry.location.lat,
+                                    longitude: item.geometry.location.lng
+                                };
+
                             });
                         });
                     };

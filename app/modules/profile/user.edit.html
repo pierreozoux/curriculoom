@@ -4,7 +4,7 @@
 
     <div class="preview alert alert-success">
         <p>Hello {{ getFullName() }} ({{ user.email }})!</p>
-        <p>You are a {{ user.age }} years old {{ user.gender }} and you live in {{ user.location }}.</p>
+        <p>You are a {{ user.age }} years old {{ user.gender }} and you live in {{ user.location.formatted_address }} ({{ user.location.latitude }}, {{ user.location.longitude }}).</p>
         <p>
             <span ng-show="user.currentlyAvailable">You are currently available.</span>
             <span ng-hide="user.currentlyAvailable">Your next availability is the {{ user.nextAvailabilityDate | date: 'shortDate' }}</span>
@@ -52,8 +52,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label name="location" required class="control-label">Location</label>
-                            <input class="form-control" type="text" ng-model="user.location">
-                            <div cf-input-city></div>
+                            <div cf-input-city model="user.location"></div>
                         </div>
                         <div cf-show-errors form-name="userForm" attribute-name="location"></div>
                     </div>

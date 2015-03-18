@@ -34,7 +34,7 @@
                 projects: [],
                 email: 'john.smith@sqli.com',
                 age: null,
-                location: 'Rabat, Morocco',
+                location: null,
                 gender: null,
                 currentlyAvailable: true,
                 newAvailaibilityDate: null,

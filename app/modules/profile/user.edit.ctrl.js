@@ -13,9 +13,8 @@
         // scope methods
         $scope.getFullName = getFullName;
         $scope.reset = reset;
-        $scope.addTag = addTag;
-        $scope.isValidTag = isValidTag;
-        $scope.removeTag = removeTag;
+        
+        $scope.maxTags = 2;
 
         init();
 
@@ -42,20 +41,6 @@
             };
         }
 
-        function addTag(newTag) {
-            if (isValidTag(newTag)) {
-                $scope.user.tags.push(newTag);
-                $scope.newTag = '';
-            }
-        }
         
-        function removeTag(tag){
-            var index = $scope.user.tags.indexOf(tag);
-            $scope.user.tags.splice(index, 1);
-        }
-
-        function isValidTag(newTag) {
-            return (newTag && newTag.trim().length !== 0 && $scope.user.tags.indexOf(newTag) === -1);
-        }
     }
 }());

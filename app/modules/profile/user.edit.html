@@ -10,6 +10,7 @@
             <span ng-hide="user.currentlyAvailable">Your next availability is the {{ user.nextAvailabilityDate | date: 'shortDate' }}</span>
         </p>
         <p ng-show="user.expectedSalary">Your expected salary is {{ user.expectedSalary | currency }}.</p>
+        <p>You have {{ user.tags.length }} tags.</p>
     </div>
 
     <form name="userForm" novalidate ng-submit="save()">
@@ -110,30 +111,21 @@
                             <input name="passwordConfirmation" class="form-control" type="password" ng-model="user.passwordConfirmation" match="user.password">
                         </div>
                         <div ng-messages="userForm.passwordConfirmation.$error" ng-if="userForm.passwordConfirmation.$touched || userForm.$submitted" ng-messages-include="modules/form/generic-error-messages.html">
-                           <div class="error" ng-message="match">Confirmation password does not match</div>
+                            <div class="error" ng-message="match">Confirmation password does not match</div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="form-group">
-                    <label class="control-label">Tags</label>
-                    <div class="row">
-                        <div class="col-sm-8">
-                            <input class="form-control" type="text" placeholder="java, tests, gestion de projet, php, hybris..." ng-model="newTag">
-                        </div>
-                        <div class="col-sm-4">
-                            <a class="btn btn-primary" ng-click="addTag(newTag)" ng-disabled="!isValidTag(newTag)">add</a>
-                        </div>
+
+                <div>
+                    <div cf-tags-edit cf-tags-edit-tags="user.tags" cf-tags-edit-max="{{ maxTags }}"></div>
+
+                    <input class="hidden" name="tagsLength" ng-model="user.tags.length" type="number" min="1" max="5" />
+                    <div ng-messages="userForm.tagsLength.$error" ng-if="userForm.tagsLength.$dirty || userForm.$submitted" ng-messages-include="modules/form/generic-error-messages.html">
+                        <div class="error" ng-message="min">Please enter at least one tag</div>
+                        <div class="error" ng-message="max">Please enter 5 tags max</div>
                     </div>
-                </div>
-                <ul class="tags">
-                    <li class="tag" ng-repeat="tag in user.tags"><i class="link glyphicon glyphicon-trash" ng-click="removeTag(tag)"></i> {{ tag }}</li>
-                </ul>
-                <input class="hidden" name="tagsLength" ng-model="user.tags.length" type="number" min="1" max="5" />
-                <div ng-messages="userForm.tagsLength.$error" ng-if="userForm.tagsLength.$dirty || userForm.$submitted" ng-messages-include="modules/form/generic-error-messages.html">
-                    <div class="error" ng-message="min">Please enter at least one tag</div>
-                    <div class="error" ng-message="max">Please enter 5 tags max</div>
                 </div>
             </div>
         </div>

@@ -8,7 +8,8 @@
         'validation.match',
         'ui.router',
         'curriculoom.profile',
-        'curriculoom.dashboard'
+        'curriculoom.dashboard',
+        'curriculoom.map'
     ]);
 
 

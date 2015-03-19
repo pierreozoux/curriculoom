@@ -28,6 +28,8 @@
 
                     function init() {
 
+                        console.log('Init directive cfTagsEdit');
+
                         if (!$scope.tags) {
                             console.warn('Tags has not been set.');
                             $scope.tags = [];
@@ -42,6 +44,7 @@
                     }
 
                     function addTag(newTag) {
+                        console.log('addTag');
                         if (isValidTag(newTag)) {
                             $scope.tags.push(newTag);
                             $scope.newTag = '';
@@ -54,7 +57,9 @@
                     }
 
                     function isValidTag(newTag) {
-                        return (newTag && newTag.trim().length !== 0 && $scope.tags.indexOf(newTag) === -1);
+                        var isValid = (newTag && newTag.trim().length !== 0 && $scope.tags.indexOf(newTag) === -1);
+                        console.log('isValidTag: ', isValid);
+                        return isValid;
                     }
 
                     function enableAddTag() {

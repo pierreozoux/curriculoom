@@ -25,5 +25,4 @@ describe('curriculoom form password service', function () {
         expect(strongness).toEqual(5);
     });
 
-
 });

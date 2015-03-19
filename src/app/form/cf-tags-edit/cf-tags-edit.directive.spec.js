@@ -1,37 +1,41 @@
-describe('Unit testing great quotes', function () {
+describe('Test directive tags-edit', function () {
     var $compile,
         $rootScope, $scope;
 
-    // Load the myApp module, which contains the directive
+    // load module containing the directive
     beforeEach(module('curriculoom.form'));
+    
+    // load templates
     beforeEach(module('app-preprocessed-templates'));
 
-    // Store references to $rootScope and $compile
-    // so they are available to all tests in this describe block
     beforeEach(inject(function (_$compile_, _$rootScope_) {
-        // The injector unwraps the underscores (_) from around the parameter names when matching
+        // the injector unwraps the underscores (_) from around the parameter names when matching
         $compile = _$compile_;
         $rootScope = _$rootScope_;
         $scope = _$rootScope_.$new();
-        // http://daginge.com/technology/2013/12/14/testing-angular-templates-with-jasmine-and-karma/
     }));
 
     it('cf-tags-edit TEST', function () {
 
+        // compile the template
         var element = angular.element("<div cf-tags-edit cf-tags-edit-tags=\"tags\" cf-tags-edit-max=\"6\" cf-tags-edit-title=\"{{ title }}\"></div>");
-        
         var template = $compile(element)($scope);
 
-        $rootScope.tags = ['test', 'truc'];
-        $rootScope.title = 'Mon titre';
+        // update the scope
+        $scope.tags = ['test', 'truc'];
+        $scope.title = 'Mon titre';
 
-        // N ow run a $digest cycle to update your template with new data
+        // run a $digest cycle to update your template with new data
         $rootScope.$digest();
 
         // Render the template as a string
         var templateAsHtml = template.html();
 
-        expect(templateAsHtml).toContain($scope.title);
-        
+        // check title
+        expect(template.find('label.control-label').text()).toContain($scope.title);
+
+        // check tags size
+        expect(template.find('.tags .tag').size()).toBe(2);
+
     });
 });

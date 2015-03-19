@@ -9,22 +9,34 @@
 
         // scope attributes 
         $scope.user = {};
+        $scope.maxLanguages = 3;
+        $scope.mapCenter;
 
         // scope methods
         $scope.getFullName = getFullName;
         $scope.reset = reset;
         $scope.checkStrongness = passwordService.checkStrongness;
-        
-        $scope.maxLanguages = 3;
+        $scope.mapClicked = mapClicked;
 
         init();
 
         function init() {
             $scope.reset();
+
+            $scope.$watch('user.location', function (location, old) {
+                if (location && location.latitude) {
+                    $scope.mapCenter = [location.latitude, location.longitude];
+                }
+            });
+
         }
 
         function getFullName() {
             return $scope.user.firstName + ' ' + $scope.user.lastName;
+        }
+
+        function mapClicked(point) {
+            alert('Point clicked: ', point);
         }
 
         function reset() {
@@ -43,6 +55,6 @@
             };
         }
 
-        
+
     }
 }());

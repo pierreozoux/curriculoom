@@ -14,11 +14,12 @@
                 </p>
                 <p ng-show="user.expectedSalary">Your expected salary is {{ user.expectedSalary | currency }}.</p>
                 <p>You have {{ user.projects.length }} projects.</p>
+                <p>Map center: {{ mapCenter }}</p>
             </div>
 
         </div>
-        <div class="col-md-6">
-            <div cm-map></div>
+        <div class="col-md-6 left-side">
+            <div class="directive-caller" cm-map center="mapCenter" click="mapClicked(point)"></div>
         </div>
 
         <form name="userForm" novalidate ng-submit="save()">

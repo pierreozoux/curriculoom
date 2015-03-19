@@ -28,6 +28,12 @@
                     $scope.mapCenter = [location.latitude, location.longitude];
                 }
             });
+            
+             $scope.$watch('mapCenter', function (mapCenter, old) {
+                if (mapCenter) {
+                   console.log('mapCenter has changed!', mapCenter);
+                }
+            });
 
         }
 
@@ -36,7 +42,7 @@
         }
 
         function mapClicked(point) {
-            alert('Point clicked: ', point);
+            console.log('Point clicked:', point);
         }
 
         function reset() {

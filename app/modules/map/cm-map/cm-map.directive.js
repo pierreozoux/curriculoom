@@ -46,7 +46,9 @@
                     });
 
                     map.on('click', function (e) {
+                        
                         var clickedPoint = latlngToArray(e.latlng);
+                        
                         console.info('Clicked on ', clickedPoint);
                         if ($scope.click) {
                             $scope.click({

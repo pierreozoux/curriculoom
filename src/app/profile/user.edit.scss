@@ -1,13 +1,22 @@
-.edit-user-page .preview{
-    margin-bottom: 20px;
+.edit-user-page {
+    .preview {
+        margin-bottom: 20px;
+        color: green;
+        
+        &:hover{
+            color: blue;
+        }
+        
+    }
+    form {
+        .tags .tag {
+            font-weight: bold;
+            color: #487490;
+        }
+    }
 }
 
-.edit-user-page form .tags .tag{
-    font-weight: bold;
-    color: #487490;
-}
-
-.map-container{
+.map-container {
     height: 250px;
     width: 100%;
 }

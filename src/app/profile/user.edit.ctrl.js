@@ -22,7 +22,11 @@
 
         function init() {
             $scope.reset();
+            
+            var res = passwordService.checkStrongness('toto');
 
+             console.log('Robustesse: ', res);
+            
             $scope.$watch('user.location', function (location, old) {
                 if (location && location.latitude) {
                     $scope.mapCenter = [location.latitude, location.longitude];

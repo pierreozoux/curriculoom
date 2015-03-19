@@ -5,11 +5,18 @@
 
     function passwordService() {
 
+        //var count = 0;
+        
         var service = {
             checkStrongness: checkStrongness
         };
 
         function checkStrongness(password) {
+
+           // count++;
+            
+            //console.log('checkStrongness calls: ', count);
+            
             if (!password || password.length < 4) {
                 return 1;
             }

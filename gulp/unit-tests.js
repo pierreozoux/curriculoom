@@ -43,20 +43,21 @@ module.exports = function(options) {
       }));
   }
 
-  function runTests (singleRun, done) {
+  function runTests (singleRun, autoWatch, done) {
     listFiles(function(files) {
       karma.server.start({
         configFile: __dirname + '/../karma.conf.js',
         files: files,
+        autoWatch: autoWatch,
         singleRun: singleRun
       }, done);
     });
   }
 
   gulp.task('test', ['scripts'], function(done) {
-    runTests(true, done);
+    runTests(true, false, done);
   });
   gulp.task('test:auto', ['watch'], function(done) {
-    runTests(false, done);
+    runTests(false, true, done);
   });
 };

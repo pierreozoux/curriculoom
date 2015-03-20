@@ -79,6 +79,7 @@
             <thead>
                 <tr>
                     <th>id</th>
+                    <th>index</th>
                     <th>name</th>
                     <th>role</th>
                     <th>description</th>
@@ -90,8 +91,9 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="project in projects">
+                <tr ng-repeat="project in projects" ng-class="{ even: $even }">
                     <td>{{ project._id }}</td>
+                    <td>{{ $index }}</td>
                     <td>{{ project.name }}</td>
                     <td>{{ project.role }}</td>
                     <td>{{ project.description }}</td>

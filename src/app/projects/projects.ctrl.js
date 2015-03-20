@@ -9,7 +9,7 @@
 
         // scope attributes 
         $scope.projects = [];
-        $scope.newProject = {};
+        $scope.newProject = {name: 'nouveau'};
 
         // scope methods
         $scope.createProject = createProject;

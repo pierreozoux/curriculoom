@@ -9,38 +9,63 @@
 
         // scope attributes 
         $scope.projects = [];
-        $scope.newProject = {};
+        $scope.projectInEdition = {};
 
         // scope methods
         $scope.createProject = createProject;
+        $scope.editProject = editProject;
         $scope.removeProject = removeProject;
 
         init();
 
         function init() {
 
-            $scope.projects = ProjectResource.query();
+            // $scope.projects = ProjectResource.query();
+
+            $scope.projects = ProjectResource.query(function (projects) {
+                $scope.projects = projects;
+            });
 
         }
 
-        function createProject(projectForm, newProject) {
+        function createProject(projectForm, projectInEdition) {
 
             if (projectForm.$valid) {
                 // form is valid
 
-                // create a new project
-                var project = new ProjectResource();
-                angular.extend(project, newProject);
-                project.$save(function () {
-                    $scope.projects.push(project);
-                });
+                if (projectInEdition._id) {
+                    ProjectResource.update({
+                        id: projectInEdition._id
+                    }, projectInEdition, function (project) {
+                        // replace project in array
+                        $scope.projects.reduce(function (index, currentProject) {
+                            if (currentProject._id === project._id) {
+                                $scope.projects[index] = project;
+                            }
+                            return index++;
+                        }, 0);
+                    });
+
+                } else {
+
+                    // create a new project
+                    var project = new ProjectResource();
+                    angular.extend(project, projectInEdition);
+                    project.$save(function () {
+                        $scope.projects.push(project);
+                    });
+                }
 
                 // reset form
-                $scope.newProject = {};
-                projectForm.$setPristine();
                 projectForm.$setUntouched();
+                projectForm.$setPristine();
+                $scope.projectInEdition = {};
             }
 
+        }
+
+        function editProject(project) {
+            $scope.projectInEdition = angular.copy(project);
         }
 
         function removeProject(project) {

@@ -4,7 +4,13 @@
     angular.module('curriculoom.projects').factory('ProjectResource', ProjectResource);
 
     function ProjectResource($resource) {
-        return $resource('/api/projects/:id', { id:'@_id' });
+        return $resource('/api/projects/:id', {
+            id: '@_id'
+        }, {
+            'update': {
+                method: 'PUT'
+            }
+        });
     }
 
 }());

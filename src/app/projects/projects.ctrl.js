@@ -49,8 +49,8 @@
                 } else {
 
                     // create a new project
-                    var project = new ProjectResource();
-                    angular.extend(project, projectInEdition);
+                    var project = new ProjectResource(projectInEdition);
+                    
                     project.$save(function () {
                         $scope.projects.push(project);
                     });

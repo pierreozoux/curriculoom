@@ -5,7 +5,7 @@
     /* déclaration du controlleur dans le module */
     angular.module('curriculoom.projects').controller('ProjectsController', ProjectsController);
 
-    function ProjectsController($scope, ProjectResource) {
+    function ProjectsController($scope) {
 
         // scope attributes 
         $scope.projects = [];
@@ -19,7 +19,24 @@
 
         function init() {
 
-            $scope.projects = ProjectResource.query();
+            $scope.projects.push({
+                name: 'projet 1',
+                description: 'description du projet 1',
+                active: true,
+                start: new Date(),
+                end: null,
+                size: '10',
+                role: 'tester'
+            });
+            $scope.projects.push({
+                name: 'projet 2',
+                description: 'description du projet 2',
+                active: false,
+                start: new Date(),
+                end: new Date(),
+                size: '44',
+                role: 'developper'
+            });
 
         }
 
@@ -29,11 +46,7 @@
                 // form is valid
 
                 // create a new project
-                var project = new ProjectResource();
-                angular.extend(project, newProject);
-                project.$save(function () {
-                    $scope.projects.push(project);
-                });
+                $scope.projects.push(newProject);
 
                 // reset form
                 $scope.newProject = {};
@@ -44,12 +57,10 @@
         }
 
         function removeProject(project) {
-            project.$delete(function () {
-                var index = $scope.projects.indexOf(project);
-                if (index > -1) {
-                    $scope.projects.splice(index, 1);
-                }
-            });
+            var index = $scope.projects.indexOf(project);
+            if (index > -1) {
+                $scope.projects.splice(index, 1);
+            }
         }
 
     }

@@ -1,7 +1,10 @@
 {
   "name": "curriculoom",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "connect-modrewrite": "^0.7.11",
+    "proxy-middleware": "^0.11.0"
+  },
   "scripts": {
     "test": "gulp test"
   },

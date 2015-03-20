@@ -6,10 +6,12 @@
     'ngCookies',
     'ngTouch',
     'ngSanitize',
+    'ngMessages',
     'ui.router',
     'ui.bootstrap',
     'curriculoom.profile',
-    'curriculoom.dashboard'
+    'curriculoom.dashboard',
+    'curriculoom.projects'
 ]);
 
     angular.module('curriculoom').config(function ($locationProvider, $urlRouterProvider) {

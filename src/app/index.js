@@ -12,7 +12,8 @@
     'curriculoom.profile',
     'curriculoom.dashboard',
     'curriculoom.projects',
-    'js-data'
+    'js-data',
+    'btford.socket-io'
 ]);
 
     angular.module('curriculoom').config(function ($locationProvider, $urlRouterProvider, DSProvider) {
@@ -22,11 +23,11 @@
 
         // For any unmatched url, redirect to /state1
         $urlRouterProvider.otherwise("/");
-        
+
         // configure js-data
         DSProvider.defaults.basePath = '/api';
         DSProvider.defaults.idAttribute = '_id';
-        
+
     });
 
 }());

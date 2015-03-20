@@ -109,11 +109,17 @@
         }
 
         function removeProject(project) {
-            project.$delete(function () {
+            // with NG-RESOURCE:
+            /* project.$delete(function () {
                 var index = $scope.projects.indexOf(project);
                 if (index > -1) {
                     $scope.projects.splice(index, 1);
                 }
+            });*/
+
+            // with JS-DATA:
+            DS.destroy('projects', project._id).then(function (project) {
+                
             });
         }
 

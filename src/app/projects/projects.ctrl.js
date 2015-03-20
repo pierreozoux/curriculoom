@@ -5,7 +5,7 @@
     /* déclaration du controlleur dans le module */
     angular.module('curriculoom.projects').controller('ProjectsController', ProjectsController);
 
-    function ProjectsController($scope, ProjectResource) {
+    function ProjectsController($scope, ProjectResource, DS) {
 
         // scope attributes 
         $scope.projects = [];
@@ -20,11 +20,13 @@
 
         function init() {
 
-            // $scope.projects = ProjectResource.query();
+            // with NG-RESOURCE:
+            /* $scope.projects = ProjectResource.query(function (projects) {
+                 $scope.projects = projects;
+             });*/
 
-            $scope.projects = ProjectResource.query(function (projects) {
-                $scope.projects = projects;
-            });
+            // with JS-DATA:
+            loadProjects();
 
         }
 
@@ -34,26 +36,49 @@
                 // form is valid
 
                 if (projectInEdition._id) {
+
+                    // update an existing project
+                    console.log('Update project "%s".', projectInEdition.name);
+
+                    // with NG-RESOURCE:
+                    /* 
                     ProjectResource.update({
                         id: projectInEdition._id
                     }, projectInEdition, function (project) {
                         // replace project in array
-                        $scope.projects.reduce(function (index, currentProject) {
-                            if (currentProject._id === project._id) {
-                                $scope.projects[index] = project;
-                            }
-                            return index++;
-                        }, 0);
+                        replaceInArray($scope.projects, project);
+                    });
+                    
+                    */
+
+                    // with JS-DATA:
+
+                    DS.update('projects', projectInEdition._id, projectInEdition).then(function (project) {
+                        // update scope
+                        loadProjects();
                     });
 
                 } else {
 
                     // create a new project
-                    var project = new ProjectResource();
-                    angular.extend(project, projectInEdition);
-                    project.$save(function () {
+                    console.log('Create a new project "%s".', projectInEdition.name);
+
+                    // with NG-RESOURCE:
+                    /* var project = new ProjectResource();
+
+                            angular.extend(project, projectInEdition);
+
+                            project.$save(function (project) {
+                                $scope.projects.push(project);
+                            });*/
+
+                    // with JS-DATA:
+
+                    DS.create('projects', projectInEdition).then(function (project) {
                         $scope.projects.push(project);
                     });
+
+
                 }
 
                 // reset form
@@ -62,6 +87,21 @@
                 $scope.projectInEdition = {};
             }
 
+        }
+
+        function loadProjects() {
+            DS.findAll('projects').then(function (projects) {
+                $scope.projects = projects;
+            });
+        }
+
+        function replaceInArray(items, item) {
+            items.reduce(function (index, current) {
+                if (current._id === item._id) {
+                    items[index] = item;
+                }
+                return index++;
+            }, 0);
         }
 
         function editProject(project) {

@@ -1,2 +1,0 @@
-# curiculoom
-Online curriculum vitae

@@ -1,0 +1,113 @@
+<div class="container">
+
+    <div ng-include="'components/navbar/navbar.html'"></div>
+
+    <div class="projects-page page">
+
+        <h1>Projects</h1>
+
+        <h2>New project</h2>
+        <form name="projectForm" novalidate ng-submit="createProject(projectForm, projectInEdition)">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group required">
+                        <label class="control-label">Name</label>
+                        <input name="projectName" required class="form-control" type="text" ng-model="projectInEdition.name">
+                    </div>
+                    <div cf-show-errors form-name="projectForm" attribute-name="projectName"></div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="form-group">
+                        <label class="control-label">Description</label>
+                        <input name="description" class="form-control" type="text" ng-model="projectInEdition.description">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group required">
+                        <label class="control-label">Role</label>
+                        <select name="role" required class="form-control" ng-model="projectInEdition.role">
+                            <option value="developer">developer</option>
+                            <option value="tester">tester</option>
+                            <option value="manager">manager</option>
+                        </select>
+                    </div>
+                    <div cf-show-errors form-name="projectForm" attribute-name="role"></div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group required">
+                        <label class="control-label">Start</label>
+                        <input name="start" required class="form-control" type="text" ng-model="projectInEdition.start" datepicker-popup is-open="openStartDate" ng-focus="openStartDate=true" ng-click="openStartDate=true">
+                    </div>
+                    <div cf-show-errors form-name="projectForm" attribute-name="start"></div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label class="control-label">End</label>
+                        <input name="end" class="form-control" type="text" ng-model="projectInEdition.end" datepicker-popup is-open="openEndDate" ng-focus="openEndDate=true" ng-click="openEndDate=true">
+                    </div>
+                    <div cf-show-errors form-name="projectForm" attribute-name="end"></div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group required">
+                        <label class="control-label">Size</label>
+                        <input name="size" required class="form-control" type="number" ng-model="projectInEdition.size">
+                    </div>
+                    <div cf-show-errors form-name="projectForm" attribute-name="size"></div>
+                </div>
+                <div class="col-sm-1">
+                    <div class="form-group">
+                        <label class="control-label">Active</label>
+                        <input name="name" class="form-control" type="checkbox" ng-model="projectInEdition.active">
+                    </div>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-sm-3 col-sm-offset-3">
+                    <button type="submit" class="btn btn-lg btn-primary">Save</button>
+                </div>
+                <div class="col-sm-3">
+                    <button class="btn btn-lg btn-warning" ng-click="reset()">Cancel</button>
+                </div>
+            </div>
+        </form>
+
+        <h2>Existing projects</h2>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>role</th>
+                    <th>description</th>
+                    <th>active</th>
+                    <th>start</th>
+                    <th>end</th>
+                    <th>size</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="project in projects">
+                    <td>{{ project._id }}</td>
+                    <td>{{ project.name }}</td>
+                    <td>{{ project.role }}</td>
+                    <td>{{ project.description }}</td>
+                    <td>{{ project.active }}</td>
+                    <td>{{ project.start | date }}</td>
+                    <td>{{ project.end | date }}</td>
+                    <td>{{ project.size }}</td>
+                    <td><a class="link" ng-click="editProject(project)"><i class="glyphicon glyphicon-edit"></i></a></td>
+                    <td><a class="link" ng-click="removeProject(project)"><i class="glyphicon glyphicon-trash"></i></a></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+
+
+</div>
